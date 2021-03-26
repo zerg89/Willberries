@@ -72,6 +72,12 @@ button {
     margin-left: 10px;
 }
 
+.btn-clear-cart {
+    background-color: tomato;
+    display: block;
+    margin-left: auto;
+}
+
 .show-goods .slider,
 .show-goods .special-offers {
     display: none;

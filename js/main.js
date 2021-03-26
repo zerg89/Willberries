@@ -20,6 +20,7 @@ const showClothing = document.querySelectorAll('.show-clothing');
 const cartTableGoods = document.querySelector('.cart-table__goods');
 const cardTableTotal = document.querySelector('.card-table__total');
 const cartCount = document.querySelector('.cart-count');
+const btnClearCart = document.querySelector('.btn-clear-cart');
 
 const getGoods = async () => {
 	const result = await fetch('db/db.json');
@@ -35,6 +36,11 @@ const cart = {
 		cartCount.textContent = this.cartGoods.reduce((sum, item) => {
 			return sum + item.count
 		}, 0)
+	},
+	clearCart() {
+		this.cartGoods.length = 0;
+		this.countQuantity();
+		this.renderCart();
 	},
 	renderCart(){
 		cartTableGoods.textContent = '';
@@ -110,6 +116,8 @@ const cart = {
 		}
 	},
 }
+
+btnClearCart.addEventListener('click', cart.clearCart.bind(cart));
 
 document.body.addEventListener('click', event => {
 	const addToCart = event.target.closest('.add-to-cart');
